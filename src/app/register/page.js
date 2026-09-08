@@ -40,7 +40,7 @@ export default function Register() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setErrorMsg('');
@@ -75,7 +75,25 @@ export default function Register() {
       if (error) throw error;
 
       if (data && data[0]) {
-        window.location.href = `/api/checkout?teamId=${data[0].id}`;
+        // Appel en POST vers l'API Stripe
+        const response = await fetch('/api/checkout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            teamId: data[0].id,
+            teamName: formData.teamName,
+          }),
+        });
+
+        const session = await response.json();
+
+        if (session.url) {
+          window.location.href = session.url;
+        } else {
+          throw new Error(session.error || 'Erreur lors de la création de la session Stripe.');
+        }
       }
     } catch (err) {
       setErrorMsg(err.message || 'Une erreur est survenue lors de l\'inscription.');
