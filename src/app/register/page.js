@@ -75,14 +75,27 @@ export default function Register() {
       if (error) throw error;
 
       if (data && data[0]) {
-        window.location.href = `/api/checkout?teamId=${data[0].id}`;
+        // Envoyer les données à l'API Stripe en POST
+        const response = await fetch('/api/checkout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            teamId: data[0].id,
+            teamName: formData.teamName,
+          }),
+        });
+
+        const session = await response.json();
+
+        if (session.url) {
+          // Rediriger vers la page de paiement sécurisée Stripe
+          window.location.href = session.url;
+        } else {
+          throw new Error(session.error || 'Erreur lors de la création de la session Stripe.');
+        }
       }
-    } catch (err) {
-      setErrorMsg(err.message || 'Une erreur est survenue lors de l\'inscription.');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <main className="min-h-screen bg-[#050204] text-stone-100 relative overflow-hidden font-sans flex flex-col justify-between">
