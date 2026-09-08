@@ -22,8 +22,8 @@ export async function POST(req) {
         },
       ],
       mode: 'payment',
-      success_url: `${req.headers.get('origin')}/success?team_id=${teamId}`,
-      cancel_url: `${req.headers.get('origin')}/register`,
+     success_url: `${req.headers.get('origin') || 'https://alolt.fr'}/success?team_id=${teamId}`,
+      cancel_url: `${req.headers.get('origin') || 'https://alolt.fr'}/register`,
       metadata: {
         teamId,
       },
