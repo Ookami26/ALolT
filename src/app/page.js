@@ -80,7 +80,7 @@ export default function Home() {
                 
                 {/* Discord */}
                 <a 
-                  href="https://discord.gg/TON_LIEN_DISCORD" 
+                  href="https://discord.gg/FQBG4HfTD" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-stone-400 hover:text-[#5865F2] transition-all transform hover:scale-110"
@@ -106,7 +106,7 @@ export default function Home() {
 
                 {/* Instagram */}
                 <a 
-                  href="https://instagram.com/TON_LIEN_INSTAGRAM" 
+                  href="https://www.instagram.com/aloltpro/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-stone-400 hover:text-[#E4405F] transition-all transform hover:scale-110"
