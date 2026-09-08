@@ -16,7 +16,7 @@ export async function POST(req) {
             product_data: {
               name: `Inscription Tournoi LoL — Équipe : ${teamName}`,
             },
-            unit_amount: 500, // 5,00 € en centimes
+            unit_amount: 1000, // 10,00 € en centimes
           },
           quantity: 1,
         },
