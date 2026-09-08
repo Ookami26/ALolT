@@ -52,7 +52,7 @@ export default function Success() {
 
           <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://discord.gg/TON_LIEN_DISCORD"
+              href="https://discord.gg/FQBG4HfTD"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold text-xs px-6 py-3.5 rounded-md uppercase tracking-widest transition-all shadow-lg"
